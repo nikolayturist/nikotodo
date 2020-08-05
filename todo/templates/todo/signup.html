@@ -9,27 +9,44 @@
     </div>
     <div class="row justify-content-center mt-5">
         <div class="col-md-5">
-            {% if error %}
-                <div class="alert alert-danger" role="alert">
-                    {{ error }}
-                </div>
-            {% endif %}
+<!--            {% if error %}-->
+<!--                <div class="alert alert-danger" role="alert">-->
+<!--                    {{ error }}-->
+<!--                </div>-->
+<!--            {% endif %}-->
 
             <form method="POST">
                 {% csrf_token %}
 				<hr>
+<!--				{{ user_creation_form.as_p }}-->
                 <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" name="username" class="form-control" id="username" aria-describedby="usernameHelp">
+					<label for="{{ user_creation_form.username.id_for_label }}">User Name:</label>
+					{{ user_creation_form.username }}
+					<small id="username-alert" class="alert-danger">{{ user_creation_form.username.errors }}</small>
+<!--                    <label for="username">Username</label>-->
+<!--                    <input type="text" name="username" class="form-control" id="username" aria-describedby="usernameHelp">-->
                     <small id="usernameHelp" class="form-text text-muted">Your username must be unique. We'll let you know if someone has taken it already.</small>
                 </div>
-                <div class="form-group">
-                    <label for="password1">Password</label>
-                    <input type="password" name="password1" class="form-control" id="password1">
+				<div class="form-group">
+					<label for="{{ user_creation_form.email.id_for_label }}">Email:</label>
+					{{ user_creation_form.email }}
+					<small id="email-alert" class="alert-danger">{{ user_creation_form.email.errors }}</small>
+<!--                    <label for="email">Email</label>-->
+<!--                    <input type="text" name="email" class="form-control" id="email" aria-describedby="emailHelp">-->
+                    <small id="emailHelp" class="form-text text-muted">Please enter valid email address. It will be used to send mail to complete registration process.</small>
                 </div>
                 <div class="form-group">
-                    <label for="password2">Confirm Password</label>
-                    <input type="password" name="password2" class="form-control" id="password2">
+					<label for="{{ user_creation_form.password1.id_for_label }}">Password:</label>
+					{{ user_creation_form.password1 }}
+<!--                    <label for="password1">Password</label>-->
+<!--                    <input type="password" name="password1" class="form-control" id="password1">-->
+                </div>
+                <div class="form-group">
+					<label for="{{ user_creation_form.password2.id_for_label }}">Password Confirmation:</label>
+					{{ user_creation_form.password2 }}
+					<small id="password2-alert" class="alert-danger">{{ user_creation_form.password2.errors }}</small>
+<!--                    <label for="password2">Confirm Password</label>-->
+<!--                    <input type="password" name="password2" class="form-control" id="password2">-->
                 </div>
                 <button type="submit" class="btn btn-primary">Sign Up</button>
             </form>

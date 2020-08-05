@@ -1,0 +1,21 @@
+{% extends 'todo/base.html' %}
+
+{% block content %}
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div class="row justify-content-center mt-5">
+        <div class="col-md-5">
+			{% if activation_error %}
+			{% else %}
+			<H2>Thank you!</H2>
+			<br>
+            <h3>We have sent you an email, please confirm your email address to complete registration.</h3>
+			{% endif %}
+        </div>
+    </div>
+
+{% endblock %}

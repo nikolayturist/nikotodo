@@ -19,6 +19,10 @@ from todo import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('signup/', views.signupuser, name="signupuser"),
+
+    path('account_activation/', views.account_activation, name='account_activation'),
+    path('activate/<slug:uidb64>/<slug:token>/', views.activate_account, name='activate_account'),
+
     path('logout/', views.logoutuser, name="logoutuser"),
     path('login/', views.loginuser, name="loginuser"),
 
