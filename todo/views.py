@@ -89,9 +89,24 @@ def activate_account(request, uidb64, token):
         user.is_active = True
         user.save()
         login(request, user)
-        return HttpResponse('Your account has been activate successfully')
+        return redirect('activation_success')
     else:
-        return HttpResponse('Activation link is invalid!')
+        return redirect('activation_fail')
+
+
+# def activation_result(request):
+#     if request.user:
+#         return render(request, 'todo/activation_result.html')
+#     else:
+#         return render(request, 'todo/activation_result.html', {"activation_error": True})
+
+
+def activation_success(request):
+    return render(request, 'todo/activation_success.html')
+
+
+def activation_fail(request):
+    return render(request, 'todo/activation_fail.html')
 
 
 # Create your views here.
@@ -110,6 +125,7 @@ def loginuser(request):
 
 def account_activation(request):
     return render(request, 'todo/account_activation.html')
+
 
 @login_required
 def logoutuser(request):
@@ -137,7 +153,8 @@ def createtodo(request):
             return redirect("currenttodos")
 
         except ValueError:
-            return render(request, 'todo/create.html', {"todo_form": TodoForm(), "error": "Bad values passed in. Please try again"})
+            return render(request, 'todo/create.html', {"todo_form": TodoForm(),
+                                                        "error": "Bad values passed in. Please try again"})
 
 
 @login_required
@@ -152,7 +169,8 @@ def viewtodo(request, todo_pk):
             form.save()
             return redirect("currenttodos")
         except ValueError:
-            return render(request, 'todo/viewtodo.html', {"todo": todo, "todoform": form, "error": "Bad values passed in. Please try again"})
+            return render(request, 'todo/viewtodo.html',
+                          {"todo": todo, "todoform": form, "error": "Bad values passed in. Please try again"})
 
 
 @login_required

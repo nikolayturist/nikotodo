@@ -1,0 +1,28 @@
+{% extends 'todo/base.html' %}
+
+{% block content %}
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div class="row justify-content-center mt-5">
+        <div class="col-md-5">
+<!--			{% if activation_error %}-->
+<!--				<div class="alert alert-danger" role="alert">-->
+<!--					<H2>Sorry,</H2>-->
+<!--					<br>-->
+<!--					<h3>Activation link is not valid. Please try again.</h3>-->
+<!--				</div>-->
+<!--				<a role="button" class="btn btn-primary btn-success" href="{% url 'signupuser' %}">  Sign Up  </a>-->
+<!--			{% else %}-->
+				<H2>Thank you!</H2>
+				<br>
+				<h3>Registration process completed successfully. Now you can start creating your TODOs.</h3>
+				<a role="button" class="btn btn-primary btn-success" href="{% url 'createtodo' %}">  Start  </a>
+			{% endif %}
+        </div>
+    </div>
+
+{% endblock %}
