@@ -7,5 +7,5 @@
 mytodo_venv
 .idea
 __pycache__
-db.mytodo
+# db.mytodo
 .env
